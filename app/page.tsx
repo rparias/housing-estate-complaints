@@ -133,7 +133,7 @@ export default function HomePage() {
             <h3 className="text-xl font-semibold mb-2">¿Tienes algo que compartir?</h3>
             <p className="text-gray-600 mb-4">Tu opinión es importante para mejorar nuestro conjunto habitacional</p>
             <Link href="/nueva-review">
-              <Button size="lg" className="flex items-center gap-2 mx-auto">
+              <Button size="lg" className="flex items-center gap-2 mx-auto hover:cursor-pointer hover:bg-gray-600">
                 <Plus className="w-4 h-4" />
                 Agregar Review Anónima
               </Button>

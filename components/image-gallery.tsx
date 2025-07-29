@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
@@ -46,10 +47,12 @@ export function ImageGallery({ images, alt = "Imagen de review" }: ImageGalleryP
               onClick={() => openModal(index)}
             >
               <div className="aspect-square relative">
-                <img
+                <Image
                   src={image || "/placeholder.svg"}
                   alt={`${alt} ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 {images.length > 3 && index === 2 && (
                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -67,10 +70,13 @@ export function ImageGallery({ images, alt = "Imagen de review" }: ImageGalleryP
         <DialogContent className="max-w-4xl w-full p-0">
           {selectedImage !== null && (
             <div className="relative">
-              <img
+              <Image
                 src={images[selectedImage] || "/placeholder.svg"}
                 alt={`${alt} ${selectedImage + 1}`}
+                fill
                 className="w-full h-auto max-h-[80vh] object-contain"
+                style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "80vh" }}
+                sizes="(max-width: 768px) 100vw, 66vw"
               />
 
               {/* Botón cerrar */}

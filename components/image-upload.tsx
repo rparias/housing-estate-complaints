@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useRef } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
@@ -100,10 +101,14 @@ export function ImageUpload({ images, onImagesChange, maxImages = 5 }: ImageUplo
             <div key={index} className="relative group">
               <Card className="overflow-hidden">
                 <div className="aspect-square relative">
-                  <img
+                  <Image
                     src={URL.createObjectURL(file) || "/placeholder.svg"}
                     alt={`Preview ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    onLoad={() => URL.revokeObjectURL(URL.createObjectURL(file))}
                   />
                   <Button
                     type="button"
