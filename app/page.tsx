@@ -20,6 +20,7 @@ export default function HomePage() {
     try {
       const reviewsData = await reviewService.getReviews({
         categorias: filters?.categorias,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ordenamiento: filters?.ordenamiento as any,
       })
       setReviews(reviewsData)
